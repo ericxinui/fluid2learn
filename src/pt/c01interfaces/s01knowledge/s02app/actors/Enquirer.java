@@ -13,15 +13,17 @@ public class Enquirer implements IEnquirer
 	
 	public Enquirer()
 	{
-        IBaseConhecimento bc = new BaseConhecimento();
-		
-		obj = bc.recuperaObjeto("tiranossauro");
+
 	}
 	
 	
 	@Override
 	public void connect(IResponder responder)
 	{
+        IBaseConhecimento bc = new BaseConhecimento();
+
+        obj = bc.recuperaObjeto("tiranossauro");
+
 		IDeclaracao decl = obj.primeira();
 		
 		while (decl != null && responder.ask(decl.getPropriedade()).equalsIgnoreCase(decl.getValor()))
