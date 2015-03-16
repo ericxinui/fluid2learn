@@ -8,7 +8,8 @@ import pt.c01interfaces.s01knowledge.s01base.inter.IDeclaracao;
 import pt.c01interfaces.s01knowledge.s01base.inter.IEnquirer;
 import pt.c01interfaces.s01knowledge.s01base.inter.IObjetoConhecimento;
 import pt.c01interfaces.s01knowledge.s01base.inter.IResponder;
-
+import java.util.ArrayList;
+import java.util.Iterator;
 
 public class Enquirer implements IEnquirer{
 
@@ -18,12 +19,13 @@ public class Enquirer implements IEnquirer{
 	@Override
 	public void connect(IResponder responder) {
 		// TODO Auto-generated method stub
-		IBaseConhecimento t = new BaseConhecimento();
-		String[] v = new String[7];
-		v = t.listaNomes();
-
-		for (int i = 0; i < v.length; i++) {			
-			obj = t.recuperaObjeto(v[i]);
+		IBaseConhecimento t = new BaseConhecimento();	
+		String[] array = t.listaNomes();
+		
+		int len = array.length;
+		
+		for (int i = 0; i < len; i++) {						
+			obj = t.recuperaObjeto(array[i]);
 			
 			IDeclaracao decl = obj.primeira();
 			
@@ -50,7 +52,7 @@ public class Enquirer implements IEnquirer{
 			
 			boolean acertei = false;
 			if(animalEsperado)
-				acertei = responder.finalAnswer(v[i]);
+				acertei = responder.finalAnswer(array[i]);
 			
 			if (acertei){
 				System.out.println("Oba! Acertei!");
