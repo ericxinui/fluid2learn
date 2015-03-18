@@ -8,8 +8,6 @@ import pt.c01interfaces.s01knowledge.s01base.inter.IDeclaracao;
 import pt.c01interfaces.s01knowledge.s01base.inter.IEnquirer;
 import pt.c01interfaces.s01knowledge.s01base.inter.IObjetoConhecimento;
 import pt.c01interfaces.s01knowledge.s01base.inter.IResponder;
-import java.util.ArrayList;
-import java.util.Iterator;
 
 public class Enquirer implements IEnquirer{
 
