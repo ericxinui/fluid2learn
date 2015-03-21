@@ -20,7 +20,8 @@ public class EnquirerAnimals implements IEnquirer {
 	}
 	
 	public boolean discover() {
-		IBaseConhecimento t = new BaseConhecimento();	
+		IBaseConhecimento t = new BaseConhecimento();
+		t.setScenario("animals");
 		String array[] = t.listaNomes();
 		
 		int len = array.length;
@@ -59,7 +60,7 @@ public class EnquirerAnimals implements IEnquirer {
 				System.out.println("Oba! Acertei!");
 				return acertei;
 			} else
-				System.out.println("fuem! fuem! fuem!");
+				System.out.println("fuem! fuem! fuem! Nao eh " + array[i] + "...");
 			
 		}
 		

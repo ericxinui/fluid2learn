@@ -1,6 +1,5 @@
 package pt.c02classes.s01knowledge.s02app.actors;
 
-import java.util.Scanner;
 
 import pt.c02classes.s01knowledge.s01base.inter.IEnquirer;
 import pt.c02classes.s01knowledge.s01base.inter.IResponder;
@@ -13,32 +12,44 @@ public class EnquirerMaze implements IEnquirer {
 		this.responder = responder;
 	}
 	
+	//responder.move--->string
 	public boolean discover() {
-		Scanner scanner = new Scanner(System.in);
 		
-		System.out.print("(P)ergunta, (M)ovimento ou (F)im? ");
-		String tipo = scanner.nextLine();
-		while (!tipo.equalsIgnoreCase("F")) {
-		   System.out.print("  --> ");
-		   String pc = scanner.nextLine();
-		   switch (tipo.toUpperCase()) {
-		      case "P": String resposta = responder.ask(pc);
-		                System.out.println("  Resposta: " + resposta);
-		                break;
-		      case "M": boolean moveu = responder.move(pc);
-		                System.out.println((moveu)?"  Movimento executado!":"Não é possível mover");
-		                break;
-		   }
-			System.out.print("(P)ergunta, (M)ovimento ou (F)im? ");
-			tipo = scanner.nextLine();
+		String norte = responder.ask("norte");
+		String sul = responder.ask("sul");
+		String leste = responder.ask("leste");
+		String oeste = responder.ask("oeste");
+		String aqui = responder.ask("aqui");
+
+		
+		
+		while(aqui != "saida"){
+			if(leste != "parede"){
+				responder.move("leste");
+			}
+			else if( leste == "parede" && norte != "parede"){
+				responder.move("norte");
+			}
+			else if( leste == "parede" && norte == "parede" && oeste != "parede"){
+				responder.move("oeste");
+			}
+			else if(leste == "parede" && norte == "parede" && oeste == "parede" && sul !="parede" ){
+				
+				responder.move("sul");
+			}
+		
+			norte = responder.ask("norte");
+			sul = responder.ask("sul");
+			leste = responder.ask("leste");
+			oeste = responder.ask("oeste");
+			aqui = responder.ask("aqui");
 		}
 		
 		if (responder.finalAnswer("cheguei"))
-			System.out.println("Você encontrou a saida!");
+			System.out.println("Voce encontrou a saida!");
 		else
-			System.out.println("Fuém fuém fuém!");
+			System.out.println("Fuem fuem fuem!");
 		
-		scanner.close();
 		
 		return true;
 	}
