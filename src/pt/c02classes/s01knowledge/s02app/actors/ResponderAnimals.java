@@ -86,20 +86,20 @@ public class ResponderAnimals implements IResponder
 	 */
 	public String ask(String question)
 	{
-		String resp = "nao sei";
+		String resposta = "nao sei";
 		
 		IDeclaracao decl = obj.primeira();
 		while (decl != null && !decl.getPropriedade().equalsIgnoreCase(question))
 			decl = obj.proxima();
 		
 		if (decl != null)
-			resp = decl.getValor();
+			resposta = decl.getValor();
 		
-		estatisticas.addInfo(questionCounter, question, resp);
+		estatisticas.addInfo(questionCounter, question, resposta);
 		
 		questionCounter++;
 		
-		return resp;
+		return resposta;
 	}
 
 	public boolean move(String direction) {

@@ -11,8 +11,8 @@ import pt.c02classes.s01knowledge.s01base.inter.IResponder;
 
 public class EnquirerAnimals implements IEnquirer {
 
-	IResponder responder;
-	IObjetoConhecimento obj;
+	private IResponder responder;
+	private IObjetoConhecimento obj;
 	public HashMap<String, String> quests = new HashMap<String, String>();
 	
 	public void connect(IResponder responder) {
